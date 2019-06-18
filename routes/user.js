@@ -48,7 +48,11 @@ router.put("/:id", (req, res) => {
     req.body.fecha_nacimiento = new Date(req.body.fecha_nacimiento);
   }
 
-  User.findByIdAndUpdate(req.params.id, { $set: req.body }, { new: true })
+  User.findByIdAndUpdate(
+    req.params.id,
+    { $set: req.body },
+    { new: true, runValidators: true }
+  )
     .then(user => {
       res.status(201).json({
         user,

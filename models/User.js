@@ -16,8 +16,9 @@ const userSchema = new Schema(
       type: Date
     },
     status: {
-      type: Boolean,
-      default: true
+      type: String,
+      enum: ["confirmacion", "activo", "inactivo"],
+      default: "confirmacion"
     },
     deportes_favoritos: {
       type: String,
